@@ -1,2 +1,2 @@
 #  JavaScript
-HW_1 - Задачи по JS
+- HW_1 - Задачи по JS
