@@ -59,7 +59,7 @@ console.log(age_1, age_2, age_3);
 //32. Если age_1  > age_3, вывести в консоль “Keep calm and look Culture channel”.
 //33. Иначе выводите “Technical work”.
 if (age_1 < age_2) {
-    console.log("You don’t have access cause your age is ” + age_1 + “ It’s less then")
+    console.log("You don’t have access cause your age is" + " " + age_1 + " " + "It's less then")
 } else if (age_1 >= age_2 && age_1 < age_3) {
     console.log('Welcome !')
 } else if (age_1 > age_3) {
@@ -87,7 +87,7 @@ if (age_1 < age_2) {
 //1*:
 function cheackAge(age_1,age_2,age_3){
     if (age_1 < age_2) {
-        console.log("You don’t have access cause your age is ” + age_1 + “ It’s less then");
+        console.log("You don’t have access cause your age is" + " " + age_1 + " " + "It's less then");
     } else if (age_1 >= age_2 && age_1 < age_3) {
         console.log('Welcome !');
     } else if (age_1 > age_3) {
@@ -99,11 +99,11 @@ function cheackAge(age_1,age_2,age_3){
 cheackAge(17, 18, 61);
 
 //2*:
-function check(age_1,age_2,age_3){
+function see(age_1,age_2,age_3){
     if (typeof(age_1) == 'number' && typeof(age_2) == 'number' && typeof(age_3) == 'number'){
         console.log('ok');
         if (age_1 < age_2) {
-            console.log("You don’t have access cause your age is ” + age_1 + “ It’s less then");
+            console.log("You don’t have access cause your age is" + " " + age_1 + " " + "It's less then");
         } else if (age_1 >= age_2 && age_1 < age_3) {
             console.log('Welcome !');
         } else if (age_1 > age_3) {
@@ -115,47 +115,38 @@ function check(age_1,age_2,age_3){
         console.log('error not a number');
     }
 };
-check(17, 18, 61)
+see(17, 18, 61)
 
 //3*:
 function check(age){
-    var valid = true;
     for (let i =0; i<age.length;i++){
-            age[i] = Number(age[i])
-            if (isNaN(age[i]) == true ){
-                console.log(age[i])
-                valid = false
-    }}
-    if (valid == true){
-        console.log('ok');
-        if (age[0] < age[1]) {
-            console.log("You don’t have access cause your age is ” + age_1 + “ It’s less then");
-        } else if (age[0] >= age[1] && age[0] < age[2]) {
-            console.log('Welcome !');
-        } else if (age[0] > age[2]) {
+        age[i] = Number(age[i])
+    }
+    if (!isNaN(age[0]) && !isNaN(age[1]) && !isNaN(age[2])){
+        if (age[0] < age[1]){
+            console.log("You don’t have access cause your age is" + " " + age[0] + " " + "It's less then");
+        } 
+        else if (age[0] >= age[1] && age[0] < age[2]){
+            console.log('Welcome !');    
+        } 
+        else if (age[0] >= age[2]){
             console.log('“Keep calm and look Culture channel”');
-        } else {
-            console.log('“Technical work”');
-        }
-    }else if (valid == false) {
-        console.log('error not a number');
-        console.log(valid)
+        }      
+    }else{
+    console.log('error not a number')
     }
 };
-check([12,33,22])
+check([22,18,24])
 
 //3* (E)
-function ok(age){
-    var valid = true
-    age.forEach((element,index) =>{
+function checkAge(age){
+    age.forEach((el,index) =>{
             age[index] = Number(age[index]);
-            if (isNaN(element) == true){
-                valid = false
-            }
+
     })
-        if (valid == true){
+        if (!isNaN(age[0]) && !isNaN(age[1]) && !isNaN(age[2])){
             if (age[0] < age[1]){
-                console.log("You don’t have access cause your age is ” + age_1 + “ It’s less then");    
+                console.log("You don’t have access cause your age is" + " " + age[0] + " " + "It's less then");
             } 
             else if (age[0] >= age[1] && age[0] < age[2]){
                 console.log('Welcome !');    
@@ -163,12 +154,12 @@ function ok(age){
             else if (age[0] >= age[2]){
                 console.log('“Keep calm and look Culture channel”');
     }      
-    }   else if (valid == false) {
+    }   else{
         console.log('fail')
     }
 }
 
-ok([22,'ss33',22])
+checkAge([22,'24asd',14])
 
 
 
