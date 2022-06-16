@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <title> HW_JS_4* </title>
+    </head>
+
+    <body>
+        <h2 title="Задание от Аналолия" align="middle">HW_JS_4*</h2>
+        <script>
+            const hw = function (age=[]){
+            for (i=0;i<age.length;i++){
+                age[i] = Number(age[i])
+            }
+                if(!isNaN(age[0]) && !isNaN(age[1]) && !isNaN(age[2])) {
+                    if (age[0] < age[1]){
+                        alert("You don’t have access cause your age is" + " "+ age[0] +" "+ "It’s less then"+ " " + age[1]);    
+                    } 
+                    else if (age[0] >= age[1] && age[0] < age[2]){
+                        alert('Welcome !');    
+                    } 
+                    else if (age[0] >= age[2] && age[0] > 0){
+                        alert('Keep calm and look Culture channel');
+                    }
+                    else {
+                        alert('Enter a number > 0')
+                    }
+                }else {
+                    alert('Fail');
+                }
+                alert(age)
+            }
+            var fNumber = prompt('Введите первое число: '), sNumber = prompt('Введите второе число: '), tNumber = prompt('Введите третье число: ');
+            var all = [];
+            all.push(fNumber,sNumber,tNumber);
+            hw(all)
+        </script>
+        <address align="middle">Link: <a href="https://t.me/mznyerz" style="color: rgb(70, 70, 218);">My Telegram</a>
+        </address>
+
+    </body>
+
+</html>
