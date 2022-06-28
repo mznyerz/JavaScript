@@ -55,24 +55,12 @@ const en = [
   ];
 // Вывести все предприятия и их отделы. Рядом указать количество сотрудников.
 // Для предприятия посчитать сумму всех сотрудников во всех отделах.
-    var total1 = Number();
-    var total2 = Number();
-    var total3 = Number();
-  var [first, second, third] = en;
-  for (i=0;i<first.departments.length;i++){
-    total1 = total1 + first.departments[i].employees_count
-    console.log('В первом предприятии существуют отделы с кол-ом сотрудников: ',first.departments[i].name, first.departments[i].employees_count)
-  }
+    en.find(el =>{
+      var sum = Number();
+    for (i=0;i<el.departments.length; i++){
+      sum = sum +el.departments[i].employees_count
+      console.log(' ', el.name, el.departments[i].name, el.departments[i].employees_count)
+    }
+    console.log('Всего человек в', el.name, '-', sum)
+  })
 
-  for (i=0;i<second.departments.length;i++){
-    total2 = total2 + second.departments[i].employees_count
-    console.log('Во втором предприятии существуют отделы с кол-ом сотрудников: ', second.departments[i].name, second.departments[i].employees_count)
-  }
-  for (i=0;i<third.departments.length;i++){
-    total3 = total3 + third.departments[i].employees_count
-    console.log('В третьем предприятии существуют отделы с кол-ом сотрудников: ', third.departments[i].name, third.departments[i].employees_count)
-  }
-
-  console.log('Всего сотрудников в первом предприятии:', total1,
-  'Всего сотрудников во втором предприятии:', total2,
-  'Всего сотрудников в третьем предприятии:', total3 )
