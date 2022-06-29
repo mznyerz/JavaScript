@@ -62,8 +62,8 @@ const en = [
       sum = sum +el.departments[i].employees_count
       otdel = otdel+ '\n' + el.departments[i].name +'—'+ el.departments[i].employees_count 
       if (sum == 0){
-        sum = String('Люди отсутствуют')
-        otdel = String('\nОтделы пустуют')
+        sum = 'Люди отсутствуют'
+        otdel = '\nОтделы пустуют'
       }
     }
     console.log('Всего человек в', el.name,'-', sum, '\nСостоит из:', otdel)
