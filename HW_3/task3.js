@@ -57,10 +57,15 @@ const en = [
 // Для предприятия посчитать сумму всех сотрудников во всех отделах.
     en.find(el =>{
       var sum = Number();
+      var otdel = [];
     for (i=0;i<el.departments.length; i++){
       sum = sum +el.departments[i].employees_count
-      console.log(' ', el.name, el.departments[i].name, el.departments[i].employees_count)
+      otdel = otdel+ '\n' + el.departments[i].name +'—'+ el.departments[i].employees_count 
+      if (sum == 0){
+        sum = String('Люди отсутствуют')
+        otdel = String('\nОтделы пустуют')
+      }
     }
-    console.log('Всего человек в', el.name, '-', sum)
+    console.log('Всего человек в', el.name,'-', sum, '\nСостоит из:', otdel)
   })
 
