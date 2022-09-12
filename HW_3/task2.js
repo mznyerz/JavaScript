@@ -356,16 +356,18 @@ var users = [{
 // Каждый объект является идентификационной карточкой человека. 
 // Нам нужно хранить только уникальные значения в этом массиве. 
 // Реализуйте функцию, которая будет выполнять эту работу.
-let uniqueName = [];
-kekw = [];
-let NewUsers = users.filter(item => {
-    if (!uniqueName.includes(item.name)){
-        uniqueName.push(item.name)
-        console.log(item.name)
-        return kekw.push(item)
-    } else {
-        console.log('duplicate =', item.name)
+//Первый вариант:
+let uniqEmail = []
+let uniqUsers = users.filter(el =>{
+    if (!uniqEmail.includes(el.email)){
+        uniqEmail.push(el.email)
+        return el
     }
 })
-console.log(kekw)
+console.log(uniqUsers)
+//Второй вариант:
+let usersStr = [...new Set(users.map(el => JSON.stringify(el)))]
+let newUsers = usersStr.map(el => JSON.parse(el))
+console.log(newUsers)
+
 
