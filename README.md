@@ -1,4 +1,5 @@
 ##  JavaScript
+![alt text](https://www.codewars.com/users/mznyerz/badges/large)
 ### HW_1
 
  1. Создать переменную “item_1”
