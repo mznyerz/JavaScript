@@ -1,58 +1,58 @@
 const en = [
-    {
-      id: 1,
-      name: "Предприятие 1",
-      departments: [
-        {
-          id: 2,
-          name: "Отдел тестирования",
-          employees_count: 10,
-        },
-        {
-          id: 3,
-          name: "Отдел маркетинга",
-          employees_count: 20,
-        },
-        {
-          id: 4,
-          name: "Администрация",
-          employees_count: 15,
-        },
-      ]
-    },
-    {
-      id: 5,
-      name: "Предприятие 2",
-      departments: [
-        {
-          id: 6,
-          name: "Отдел разработки",
-          employees_count: 50,
-        },
-        {
-          id: 7,
-          name: "Отдел маркетинга",
-          employees_count: 20,
-        },
-        {
-          id: 8,
-          name: "Отдел охраны труда",
-          employees_count: 5,
-        },
-      ]
-    },
-    {
-      id: 9,
-      name: "Предприятие 3",
-      departments: [
-        {
-          id: 10,
-          name: "Отдел аналитики",
-          employees_count: 0,
-        },
-      ]
-    }
-  ]
+  {
+    id: 1,
+    name: "Предприятие 1",
+    departments: [
+      {
+        id: 2,
+        name: "Отдел тестирования",
+        employees_count: 10,
+      },
+      {
+        id: 3,
+        name: "Отдел маркетинга",
+        employees_count: 20,
+      },
+      {
+        id: 4,
+        name: "Администрация",
+        employees_count: 15,
+      },
+    ]
+  },
+  {
+    id: 5,
+    name: "Предприятие 2",
+    departments: [
+      {
+        id: 6,
+        name: "Отдел разработки",
+        employees_count: 50,
+      },
+      {
+        id: 7,
+        name: "Отдел маркетинга",
+        employees_count: 20,
+      },
+      {
+        id: 8,
+        name: "Отдел охраны труда",
+        employees_count: 5,
+      },
+    ]
+  },
+  {
+    id: 9,
+    name: "Предприятие 3",
+    departments: [
+      {
+        id: 10,
+        name: "Отдел аналитики",
+        employees_count: 0,
+      },
+    ]
+  }
+]
 
 //   Задания:
 // 1. Вывести все предприятия и их отделы. Рядом указать количество сотрудников. Для предприятия посчитать сумму всех сотрудников во всех отделах.
@@ -70,20 +70,20 @@ const en = [
 // Предприятие 3 (нет сотрудников)
 // - Отдел аналитики (нет сотрудников)
 en.forEach(el => {
-    let otdel = String();
-    let sum = Number();
-    for (i in el.departments){
-      if (el.departments[i].employees_count !== 0){
-        sum = sum + el.departments[i].employees_count
-        otdel = `${otdel + el.departments[i].name} (${el.departments[i].employees_count}) \n`
-        }else if (sum == 0 && el.departments[i].employees_count == 0){
-          otdel = `${el.departments[i].name} (нет сотрудников) \n`
-          sum = `нет сотрудников`
-        } else if (sum > 0 && el.departments[i].employees_count == 0){
-          otdel = `${otdel + el.departments[i].name} (нет сотрудников) \n`
-        }
+  let otdel = String();
+  let sum = Number();
+  for (i in el.departments) {
+    if (el.departments[i].employees_count !== 0) {
+      sum = sum + el.departments[i].employees_count
+      otdel = `${otdel + el.departments[i].name} (${el.departments[i].employees_count}) \n`
+    } else if (sum == 0 && el.departments[i].employees_count == 0) {
+      otdel = `${el.departments[i].name} (нет сотрудников) \n`
+      sum = `нет сотрудников`
+    } else if (sum > 0 && el.departments[i].employees_count == 0) {
+      otdel = `${otdel + el.departments[i].name} (нет сотрудников) \n`
     }
-    return console.log(`${el.name} (${sum}) \n${otdel}`)
+  }
+  return console.log(`${el.name} (${sum}) \n${otdel}`)
 })
 
 // 2. Написать функцию, которая будет принимать 1 аргумент (id отдела или название отдела и возвращать название предприятия, к которому относится).
@@ -91,166 +91,135 @@ en.forEach(el => {
 // getEnterpriseName(4) // Предприятие 1
 // getEnterpriseName("Отдел маркетинга") // Предприятие 2
 //Первый вариант
-function getEnterpriseNamez(az){
-    for (i in en){
-        for (l in en[i].departments){
-            if (en[i].departments[l].id == az){
-                console.log(en[i].name)
-            }
-        }
-    }}
-getEnterpriseNamez(8)
-//Второй вариант 
-function getEnterpriseNamez1(az){
-  en.filter(el => {
-    el.departments.filter(item => {
-      if(item.id == az){
-        return console.log(el.name)
-      }
-    })
-  })
+function getEnterpriseNamez1(arr, id) {
+  let r = JSON.parse(JSON.stringify(arr)).filter(el => el.departments.find(item => item.id == id))
+  return r.map(el => el.name).toString()
 }
-getEnterpriseNamez1(6)
+console.log(getEnterpriseNamez1(en, 4))
+
+//Второй вариант:
+function getEnterpriseNamez(arr, id) {
+  let r = JSON.parse(JSON.stringify(arr))
+  for (i in r) {
+    for (l in r[i].departments) {
+      if (r[i].departments[l].id == id) {
+        return r[i].name
+      }
+    }
+  }
+}
+console.log(getEnterpriseNamez(en, 8))
 
 
 // 3. Написать функцию, которая будет добавлять предприятие. В качестве аргумента принимает название предприятия
 // Пример:
 // addEnterprise("Название нового предприятия")
-function addEnterprise (pred){
-    let maxid = Number();
-    en.forEach(el => {
-        maxid = el.id +1
-    })
-   en.push({id : maxid , name : pred})
-   console.log(en)
+function addEnterprise(arr, pred) {
+  let maxid = Number();
+  let r = JSON.parse(JSON.stringify(arr))
+  r.forEach(el => {
+    maxid = el.id + 1
+  })
+  r.push({ id: maxid, name: pred, departments: [] })
+  return r
 }
-addEnterprise ('Предприятие 1337')
+console.log(addEnterprise(en, 'Предприятие 1337'))
 
 
 // 4. Написать функцию, которая будет добавлять отдел в предприятие. В качестве аргумента принимает id предприятия, в которое будет добавлен отдел и название отдела.
-//Первый вариант:
-function addDepartment(nom, pre){
-  let maxid = Number();
-  en.forEach(el => {
-    if (el.id == nom){
-      el.departments.forEach(item => maxid = item.id+1)
-      el.departments.push({id:maxid, name:pre, employees_count : Math.floor(Math.random() * 10)})
 
+function addDepartment(arr, nom, pre) {
+  let enterprise = JSON.parse(JSON.stringify(arr))
+  let maxid = Number();
+  enterprise.forEach(el => {
+    if (el.id == nom) {
+      el.departments.forEach(item => maxid = item.id + 1)
+      el.departments.push({ id: maxid, name: pre, employees_count: Math.floor(Math.random() * 10) })
+    }
+  })
+  return enterprise
 }
-    console.log(el)})
-}
-addDepartment(5, "Noname_otdel")
-// Второй вариант:
-function addDepartment1(nom, pre){
-    en.find(el =>{
-      let maxid = Number();
-      if(el.id == nom){
-        el.departments.forEach(item => maxid = item.id+1)
-        el.departments.push({id:maxid, name:pre, employees_count:Math.floor(Math.random()* 10)})
-      }
-      console.log(el)
-    })
-  }
-addDepartment1(5, "Noname_otdel")
-  
+console.log(addDepartment(en, 1, "Noname_otdel"))
+
+
+
 
 // 5. Написать функцию для редактирования названия предприятия. Принимает в качестве аргумента id предприятия и новое имя предприятия.
 // Пример:
 // editEnterprise(1, "Новое название предприятия")
 
-let editEnterprise = function (id, name){
-en.forEach(el => {
-    if (el.id == id){
-    el.name = name
-  }
-  console.log(el)
-})
+let editEnterprise = function (arr, id, name) {
+  let r = JSON.parse(JSON.stringify(arr))
+  r.forEach(el => {
+    if (el.id == id) {
+      el.name = name
+    }
+  })
+  return r
 }
-editEnterprise(5, "Новое название предприятия")
+console.log(editEnterprise(en, 5, "Новое название предприятия"))
+
 // 6. Написать функцию для редактирования названия отдела. Принимает в качестве аргумента id отдела и новое имя отдела.
 // Пример:
-// editDepartment(7, "Новое название отдела")
-
-let editDepartment = function (id, name){
-  en.forEach(el => {
-    el.departments.forEach(item =>{
-      if(item.id == id){
+let editDepartment = function (arr, id, name) {
+  let r = JSON.parse(JSON.stringify(arr))
+  r.forEach(el => {
+    el.departments.forEach(item => {
+      if (item.id == id) {
         item.name = name
-      }})
-  console.log(el)})
+      }
+    })
+  })
+  return r
 }
-editDepartment(7, "Новое название отдела")
+console.log(editDepartment(en, 2, "Новое название отдела"))
 
 // 7. Написать функцию для удаления предприятия. В качестве аргумента принимает id предприятия.
 // Пример:
 // deleteEnterprise(1)
 
-// Первый вариант
-function deleteEnterprise(del_id){
-  let check = en.filter(el => {
-      return el.id!==del_id
-    })
-    return check
-  }
-  console.log(deleteEnterprise(5))
+function deleteEnterprise(arr, del_id) {
+  let result = JSON.parse(JSON.stringify(arr))
+  return result.filter(el => el.id !== del_id)
 
-
-// Второй вариант
-let deleteEnterprise1 = function(del_id){
-  en.forEach(el =>{
-    if(el.id == del_id){
-      delete el['name'] && delete el['id'] && delete el['departments']
-    }
-  console.log(el)})
 }
-deleteEnterprise1(5)
+console.log(deleteEnterprise(en, 5))
 
 
 // 8. Написать функцию для удаления отдела. В качестве аргумента принимает id отдела. Удалить отдел можно только, если в нем нет сотрудников.
 // Пример:
 // deleteDepartment(3)
 
-//Первый вариант:
-let deleteDepartment = (id_dep) => {
-  en.forEach(el => {
-    el.departments.forEach(item => {
-      if (item.id == id_dep && item.employees_count == 0){
-        delete item["id"] &&
-        delete item["name"] &&
-        delete item["employees_count"]
-      }
-    })
-console.log(el)})
-}
-deleteDepartment(10)
-//Второй вариант:
-let deleteDepartment1 = (id_dep) => {  
-  for (i in en){
-    for (e in en[i].departments){
-      if (en[i].departments[e].id == id_dep && en[i].departments[e].employees_count == 0){
-        delete en[i].departments[e]
+let deleteDepartment1 = (arr, id_dep) => {
+  let r = JSON.parse(JSON.stringify(arr))
+  for (i in r) {
+    for (e in r[i].departments) {
+      if (r[i].departments[e].id == id_dep && r[i].departments[e].employees_count == 0) {
+        delete r[i].departments[e]
       }
     }
-  console.log(en[i])}
+  }
+  return r
 }
-deleteDepartment1(10)
+console.log(deleteDepartment1(en, 10))
 // 9. Написать функцию для переноса сотрудников между отделами одного предприятия. В качестве аргумента принимает два значения: id отдела, из которого будут переноситься сотрудники и id отдела, в который будут переноситься сотрудники).
 // Пример:
 // moveEmployees(2, 3)
 
-function  moveEmployees(id_from, id_where){
-  en.forEach(el => {
+function moveEmployees(arr, id_from, id_where) {
+  let r = JSON.parse(JSON.stringify(arr))
+  r.forEach(el => {
     let count = Number()
-    for (i in el.departments){
-      for (k in el.departments){
-        if (el.departments[i].id == id_from && el.departments[k].id == id_where){
+    for (i in el.departments) {
+      for (k in el.departments) {
+        if (el.departments[i].id == id_from && el.departments[k].id == id_where) {
           count = el.departments[k].employees_count
           el.departments[k].employees_count = 0
           el.departments[i].employees_count = el.departments[i].employees_count + count
         }
       }
     }
-  console.log(el.departments)})
+  })
+  return r
 }
-moveEmployees(2,4)
-
+console.log(moveEmployees(en, 2, 4))
