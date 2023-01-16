@@ -22,7 +22,7 @@
 ```javascript
 
 const userInfo = {
-    name: "Вася",
+    name: "Username",
     age: 30,
   };
 function user () {
